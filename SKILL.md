@@ -1,6 +1,6 @@
 ---
 name: python-quality-review
-description: 通用 Python 项目代码质量与架构审查技能。对标 AgentScope 工程规范 + python-refactoring 坏味道体系，从代码风格、封装边界、高内聚低耦合、游离方法、架构设计、测试质量六大维度做系统性审查，输出结构化质量报告。当用户说"代码质量审查"、"全面审查"、"架构审查"、"质量检查"、"code review"、"review 代码"、"质量报告"、"游离方法检查"、"封装边界检查"、"对标 AgentScope"、"技术债务盘点"时使用此技能。支持快速模式（单模块扫描）和深度模式（全维度 + 改进路线图）。
+description: 通用 Python 项目代码质量与架构审查技能。从代码风格、封装边界、高内聚低耦合、游离方法、架构设计、测试质量六大维度做系统性审查，输出结构化质量报告。当用户说"代码质量审查"、"全面审查"、"架构审查"、"质量检查"、"code review"、"review 代码"、"质量报告"、"游离方法检查"、"封装边界检查"、"工程规范对标"、"技术债务盘点"时使用此技能。支持快速模式（单模块扫描）和深度模式（全维度 + 改进路线图）。
 keywords:
     - 代码质量
     - 质量审查
@@ -8,7 +8,7 @@ keywords:
     - 全面审查
     - code review
     - 质量报告
-    - AgentScope
+    - 工程规范
     - 高内聚低耦合
     - 游离方法
     - 封装边界
@@ -23,7 +23,7 @@ keywords:
 
 # Python 代码质量审查技能
 
-对标 AgentScope 工程规范 + python-refactoring 坏味道识别体系，对 Python 项目做系统性质量审查。
+综合成熟开源项目的工程实践与经典代码坏味道（code smell）识别体系，对 Python 项目做系统性质量审查。
 
 ## Overview
 
@@ -57,7 +57,7 @@ keywords:
 │     - 类型注解覆盖率 / 命名规范 / docstring           │
 │     - 异常处理规范（裸 except、日志记录）              │
 ├─────────────────────────────────────────────────────┤
-│  3. 封装与边界检查（AgentScope 风格）                  │
+│  3. 封装与边界检查（公共/内部边界）                    │
 │     - 私有属性穿透（_xxx 被外部访问）                  │
 │     - 公共/内部边界（__all__、_ 前缀模块）             │
 │     - 猴子补丁 / 动态挂载方法                         │
@@ -216,7 +216,7 @@ keywords:
 - `references/encapsulation-checklist.md` — 封装边界审查清单
 - `references/cohesion-coupling-checklist.md` — 高内聚低耦合 + 游离方法检查清单
 - `references/architecture-checklist.md` — 架构与设计模式审查清单
-- `references/agentscope-benchmarks.md` — AgentScope 工程规范对标参考
+- `references/best-practices-benchmarks.md` — 工程规范对标参考（以 AgentScope 为范例）
 - `references/report-template.md` — 质量审查报告完整模板（快速/深度双模式）
 
 ## 与其他技能的关系

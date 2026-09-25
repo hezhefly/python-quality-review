@@ -1,7 +1,8 @@
-# AgentScope 工程规范对标参考
+# 工程规范对标参考（以 AgentScope 为范例）
 
-[AgentScope](https://github.com/modelscope/agentscope) 是本 skill 采用的工程规范对标基准。
-本文档整理其核心工程规范，供质量审查时对照——审查者据此判断「被审项目离标杆有多远」。
+本文件以一个结构工整的成熟开源项目 [AgentScope](https://github.com/modelscope/agentscope)
+为例，拆解其工程规范的具体做法，作为审查时的对照基准——审查者据此判断「被审项目离这类成熟规范有多远」。
+这里讲的是**可复用的做法**，不是某个项目专属的规则。
 
 ---
 

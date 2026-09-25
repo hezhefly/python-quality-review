@@ -18,7 +18,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │   ├── encapsulation-checklist.md
 │   ├── cohesion-coupling-checklist.md
 │   ├── architecture-checklist.md
-│   ├── agentscope-benchmarks.md    # AgentScope 工程规范对标
+│   ├── best-practices-benchmarks.md    # 工程规范对标（以 AgentScope 为范例）
 │   └── report-template.md         # 快速/深度双模式报告模板
 ├── README.md / install.sh / CONTRIBUTING.md / CHANGELOG.md   # 开源仓库门面
 └── CLAUDE.md
