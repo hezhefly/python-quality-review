@@ -112,6 +112,9 @@ python-quality-review: review 一下 src/your_package/agent/ 这个模块
 │   ├── architecture-checklist.md
 │   ├── best-practices-benchmarks.md
 │   └── report-template.md
+├── scripts/                   # 零依赖预检脚本（纯 ast，无需 pip install）
+│   ├── preflight.py           #   自动锁定 P0/P1 客观问题
+│   └── README.md
 ├── install.sh                 # 一键安装脚本
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
