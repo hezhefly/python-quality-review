@@ -11,4 +11,4 @@
 - python-refactoring 坏味道体系复用
 - P0–P3 问题分级 + 结构化报告模板
 
-[Unreleased]: https://github.com/<your-org>/python-quality-review/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/hezhefly/python-quality-review/compare/v0.1.0...HEAD

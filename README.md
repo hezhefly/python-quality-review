@@ -1,8 +1,8 @@
 # python-quality-review
 
 > 一个面向 Python 项目的代码质量与架构审查 **Claude Code Skill**。
-> 对标 [AgentScope](https://github.com/modelscope/agentscope) 工程规范 +
-> [python-refactoring](https://github.com/) 坏味道识别体系，
+> 对标 [AgentScope](https://github.com/modelscope/agentscope) 工程规范与
+> 经典「代码坏味道」（code smell）识别体系，
 > 从 **代码风格 / 封装边界 / 高内聚低耦合 / 游离方法 / 架构设计 / 测试质量**
 > 六大维度做系统性审查，输出按 P0–P3 分级的结构化质量报告。
 
@@ -53,16 +53,16 @@
 
 ```bash
 # 全局安装到 Claude Code
-npx skills add <your-org>/python-quality-review -g -a claude-code -y
+npx skills add hezhefly/python-quality-review -g -a claude-code -y
 
 # 或同时装到多个 agent（Codex / Cursor / OpenCode 等）
-npx skills add <your-org>/python-quality-review -g -a claude-code -a cursor -y
+npx skills add hezhefly/python-quality-review -g -a claude-code -a cursor -y
 ```
 
 ### 方式二：Claude Code 手动复制（用户级）
 
 ```bash
-git clone https://github.com/<your-org>/python-quality-review.git
+git clone https://github.com/hezhefly/python-quality-review.git
 cd python-quality-review
 mkdir -p ~/.claude/skills/python-quality-review
 cp SKILL.md ~/.claude/skills/python-quality-review/
@@ -74,7 +74,7 @@ cp -R references ~/.claude/skills/python-quality-review/
 ### 方式三：一键脚本
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<your-org>/python-quality-review/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/hezhefly/python-quality-review/main/install.sh | bash
 ```
 
 脚本不带参数装到用户级 `~/.claude/skills/`；传项目路径则装到该项目的 `.claude/skills/`。
@@ -123,7 +123,7 @@ python-quality-review: review 一下 src/your_package/agent/ 这个模块
 ```
 
 > 仓库根的 `SKILL.md` 即 skill 本体——这是 skills.sh / skills CLI 的标准布局，
-> 保证 `npx skills add <your-org>/python-quality-review` 能直接命中。
+> 保证 `npx skills add hezhefly/python-quality-review` 能直接命中。
 
 ## 路线图
 
