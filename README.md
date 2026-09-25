@@ -1,5 +1,7 @@
 # python-quality-review
 
+**English**: [README_EN.md](README_EN.md)
+
 > 面向 Python 项目的代码质量与架构审查 **Claude Code Skill**。
 > 从 **代码风格 / 封装边界 / 高内聚低耦合 / 游离方法 / 架构设计 / 测试质量**
 > 六大维度做系统性审查，输出按 P0–P3 分级的结构化质量报告。
@@ -93,6 +95,55 @@ python-quality-review: review 一下 src/your_package/agent/ 这个模块
 技能会自动判断是快速模式还是深度模式，输出 Markdown 报告到当前会话，
 报告模板见 [`references/report-template.md`](references/report-template.md)。
 
+## 最佳实践：怎么用效果最好
+
+### 1. 先跑预检脚本，再让 AI 深读
+
+脚本摆客观事实，AI 判语义。把两者串起来：
+
+```bash
+# 第一步：机器先扫，拿到 P0/P1 客观清单
+python scripts/preflight.py src/ --min-severity P1
+```
+
+然后把结果喂给 Claude Code：
+
+```
+把 preflight 的输出过一遍：确认真正该修的（排除误报），
+对每个 P0/P1 给出具体修复代码片段，再补人工维度（游离方法、测试真实性）。
+```
+
+这样 AI 不会在「哪里有问题」上浪费时间，直接聚焦「为什么、怎么改」。
+
+### 2. 按场景选对触发语
+
+| 你想要的 | 这么说 |
+|---------|--------|
+| 快速看一个文件/模块 | 「快速 review 一下 `src/foo/bar.py`」 |
+| 全项目正式报告 | 「对当前项目做一次**全面**质量审查」 |
+| 开源前对齐规范 | 「**深度审计**，按 P0–P3 出改进路线图」 |
+| 接手陌生仓库 | 「**全项目盘点**，先给技术债总览」 |
+| 只看某一维 | 「只查**封装边界**：有没有跨模块访问 `_private`」 |
+
+### 3. 别让它一次改太多
+
+本技能**只出报告 + 路线图，不直接动手改**。拿到 P0 清单后：
+
+- 一次只让它修 P0（2–5 个），每修完一类再要下一类
+- 大修（拆上帝类、改异常体系）先让它出**方案对比**，确认后再改
+- 改完用 `python scripts/preflight.py .` 回归，看 P0/P1 是否清零
+
+### 4. 和其他技能串成流水线
+
+```
+本技能（找问题） → python-refactoring（动手修） → code-review（验证没改坏）
+```
+
+### 5. 把报告留下来当基线
+
+- 深度报告存成 `docs/quality-baseline-YYYY-MM.md`，下个季度对比，看 P0 是否下降
+- 接 CI：`python scripts/preflight.py . --min-severity P1` 退出码非零即拦截，防技术债新增
+
 ## 与其他技能的关系
 
 - **python-refactoring**：侧重「动手改代码」。本技能侧重「找问题 + 出报告 + 路线图」。两者串起来用：先本技能审查 → 再 python-refactoring 修复。
@@ -127,7 +178,7 @@ python-quality-review: review 一下 src/your_package/agent/ 这个模块
 
 ## 路线图
 
-- [ ] 支持输出 JSON 格式（便于接 CI / 看板）
+- [x] 预检脚本支持 JSON 输出（preflight.py `--json`，可接 CI）
 - [ ] 增加 ruff / mypy / pylint 结果的自动化预扫
 - [ ] 新增 FastAPI / LangGraph / Pydantic 项目专属配置档
 - [ ] 提供 `examples/` 真实项目审查样本
